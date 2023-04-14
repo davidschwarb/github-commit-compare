@@ -1,0 +1,27 @@
+{
+  "name": "GitHub Commit Compare",
+  "version": "0.0.0.1",
+  "manifest_version": 3,
+  "description": "An extension to add UI to compare commits on the commit view.",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://github.com/*/commits/*"
+  ],
+  "content_scripts": [{
+    "matches": [
+      "http://*/*",
+      "https://github.com/*/commits/*"
+    ],
+    "run_at": "document_idle",
+    "js": [
+      "injectableHashComparer.js"
+    ]
+  }]
+}
